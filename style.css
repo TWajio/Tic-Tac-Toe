@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #222;
+  color: #fff;
+}
+h1 {
+  margin-bottom: 20px;
+}
+#game {
+  position: relative; /* add this */
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+}
+#win-line {
+  position: absolute;
+  background-color: lime;
+  height: 5px;
+  width: 0;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  opacity: 0;
+  transition: width 0.5s ease;
+  transform-origin: left center;
+  pointer-events: none;
+}
+.cell {
+  color: #000;
+  background-color: white;
+  border: 2px solid #666;
+  border-radius: .9rem;
+  font-size: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.cell.x {
+  color: blue;
+}
+
+.cell.o {
+  color: red;
+}
+.cell:hover {
+  background-color: #c8c8c8;
+}
+#status {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+#reset {
+  background-color: #00df1a;
+  color: white;
+  border: 5px solid rgb(160, 160, 160);
+  border-radius: 50px; /* Makes it rounded */
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#reset:hover {
+  background-color: green;
+}
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+.popup-content {
+  background: linear-gradient(135deg, #ffffffcc, #e0e0e0cc);
+  color: #000;
+  padding: 40px 60px;
+  border-radius: 20px;
+  font-size: 1.8em;
+  font-weight: bold;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transform: scale(0.7);
+  animation: popupScaleFade 0.4s ease forwards;
+}
+.hidden {
+  display: none !important;
+
+}
+ @keyframes popupScaleFade {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#play-again-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #00df1a;
+  color: white;
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#play-again-btn:hover {
+  background-color: green;
+}
