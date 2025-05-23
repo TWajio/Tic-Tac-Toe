@@ -4,7 +4,6 @@ const winLine = document.getElementById('win-line');
 let currentPlayer = 'X';
 let gameActive = true;
 
-// Winning combinations (cell index positions)
 const winConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -16,11 +15,11 @@ const winConditions = [
   [2, 4, 6]
 ];
 
-// Handle a cell click
+
 function handleClick(e) {
   const cell = e.target;
 
-  // Do nothing if cell is already filled or game is over
+
   if (cell.textContent !== '' || !gameActive) return;
 
   cell.textContent = currentPlayer;
@@ -83,7 +82,7 @@ function showWinLine(combination) {
   const dx = endX - startX;
   const dy = endY - startY;
   const distance = Math.hypot(dx, dy);
-  const offset = 20; // adjust this for how much earlier/later the line starts/ends
+  const offset = 20;
 
   // Normalize direction and apply offset
   const offsetX = (dx / distance) * offset;
@@ -122,14 +121,14 @@ function showPopup(message) {
   popupMessage.innerHTML = message + '<br><button id="play-again-btn">Play Again</button>';
   popup.classList.remove('hidden');
 
-  // Re-add the event listener to the newly inserted button
+
   const playAgainBtn = document.getElementById('play-again-btn');
   playAgainBtn.addEventListener('click', () => {
     hidePopup();
-    reset(); // Reset the board
+    reset(); 
   });
 }
-// Reset the game
+
 function reset(){
   cells.forEach(cell => {
     cell.textContent = '';
@@ -148,10 +147,10 @@ function hidePopup() {
   const popup = document.getElementById('popup');
   popup.classList.add('hidden');
 }
-// Add event listeners to all cells
+
 cells.forEach(cell => cell.addEventListener('click', handleClick));
 const playAgainBtn = document.getElementById('play-again-btn');
 playAgainBtn.addEventListener('click', () => {
   hidePopup();
-  reset();  // Call your reset function to clear the board and start fresh
+  reset(); 
 });
