@@ -30,10 +30,9 @@ const winningCombo = getWinningCombination();
     gameActive = false;
     showWinLine(winningCombo);
 
-    // Delay popup after animation
     setTimeout(() => {
       showPopup(`${currentPlayer} Wins!`);
-    }, 600); // a bit longer than the line animation
+    }, 600); 
     return;
   }
 
@@ -47,12 +46,11 @@ const winningCombo = getWinningCombination();
 
 
 
-  // Switch turn
   currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
   document.getElementById('status').textContent = `Player ${currentPlayer}'s turn`;
 }
 
-// Check for a win
+
 function checkWin() {
   return winConditions.some(combination => {
     return combination.every(index => {
@@ -61,7 +59,6 @@ function checkWin() {
   });
 }
 
-// Check for draw
 function isDraw() {
   return [...cells].every(cell => cell.textContent !== '');
 }
@@ -78,13 +75,11 @@ function showWinLine(combination) {
   let endX = lastRect.left + lastRect.width / 2 - gameRect.left;
   let endY = lastRect.top + lastRect.height / 2 - gameRect.top;
 
-  // Calculate direction
   const dx = endX - startX;
   const dy = endY - startY;
   const distance = Math.hypot(dx, dy);
   const offset = 20;
 
-  // Normalize direction and apply offset
   const offsetX = (dx / distance) * offset;
   const offsetY = (dy / distance) * offset;
 
@@ -138,6 +133,7 @@ function reset(){
     winLine.style.width = '0';
   });
   currentPlayer = 'X';
+  document.getElementById('status').textContent = `Player ${currentPlayer}'s turn`;
   gameActive = true;
 }
 resetBtn.addEventListener('click', () => {
